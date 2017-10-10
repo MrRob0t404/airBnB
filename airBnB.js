@@ -9,10 +9,17 @@ var rl = readline.createInterface({
     output: process.stdout
 })
 
-/* An array of objects
- * Each object holds 
-*/
+/**ROOMS GLOBAL VARIABLE */
 var rooms;
+
+const fs = require('fs');
+
+fs.readFile('rooms.json', (err, data) => {
+    if (err) throw err;
+    rooms = JSON.parse(data);
+    //console.log(room);
+});
+
 
 // make the string exactly as long as len
 function padLeft(str, len) {
@@ -24,6 +31,17 @@ function padLeft(str, len) {
             money = ' ' + money
         }
         return money;
+    }
+}
+
+function padTo(str, len) {
+    if (str.length > len) {
+        return str.slice(0, len - 3) + '...'
+    } else {
+        while (str.length < len) {
+            str += ' '
+        }
+        return str;
     }
 }
 
@@ -61,15 +79,6 @@ function occupancy(n, max) {
     rooms[n].maxOccupants = max
     console.log('Occupants set.')
 }
-
-// function _loc_(str) { //List out all the rooms that have '_loc_' in the location (partial match)
-//     for (var i = 0; i < rooms.length; i++) {
-//         if (rooms[i].location.includes(str)) {
-//             console.log(rooms[i]);
-//         }
-//     }
-//     console.log('No results ...');
-// }
 
 function list(callback) {
     console.log(
