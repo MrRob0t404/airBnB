@@ -1,5 +1,5 @@
 //By Simon Gaviria
-//Hello
+
 var readline = require('readline')
 
 var options = 'list, show n, reserve n, occupancy n max, search key-word'
@@ -9,79 +9,10 @@ var rl = readline.createInterface({
     output: process.stdout
 })
 
-var rooms = [{
-        price: 200,
-        location: '11 Broadway, NY',
-        maxOccupants: 3,
-        amenities: ['washer/dryer', 'wifi', 'cable']
-    },
-    {
-        price: 100,
-        location: '11 Delancey, NY',
-        maxOccupants: 1,
-        amenities: []
-    },
-    {
-        price: 2000,
-        location: '1 Park Pl, NY',
-        maxOccupants: 2,
-        amenities: ['pool', 'valet', 'butler', 'private dog walker & whisperer']
-    },
-    {
-        price: 90000,
-        location: '1 Broad St, NY',
-        maxOccupants: 33,
-        amenities: ['disco ball']
-    },
-    {
-        price: 2000,
-        location: '2312 144th St, NY',
-        maxOccupants: 4,
-        amenities: []
-    },
-    {
-        price: 200000,
-        location: '47-10 Austell Pl, NY',
-        maxOccupants: 200,
-        amenities: ['drill', 'sometimes wifi', 'luna']
-    },
-    {
-        price: 0,
-        location: 'Times Square, NY',
-        maxOccupants: 3,
-        amenities: ['sewage water', 'hagglers', 'naked cowboy', 'wifi']
-    },
-    {
-        price: 200000,
-        location: '1600 Pennsylvania Ave, DC',
-        maxOccupants: 500,
-        amenities: ['nixon\'s bowling', 'orange hairpiece', 'oval office', 'pair of small hands']
-    },
-    {
-        price: 2000000,
-        location: 'Falchi Bldg, NY',
-        maxOccupants: 5000,
-        amenities: ['food truck']
-    },
-    {
-        price: 250,
-        location: 'Washington Pl, NY',
-        maxOccupants: 100,
-        amenities: ['fountain', 'dosa cart']
-    }
-];
-
-// make the string exactly as long as len
-function padTo(str, len) {
-    if (str.length > len) {
-        return str.slice(0, len - 3) + '...'
-    } else {
-        while (str.length < len) {
-            str += ' '
-        }
-        return str;
-    }
-}
+/* An array of objects
+ * Each object holds 
+*/
+var rooms;
 
 // make the string exactly as long as len
 function padLeft(str, len) {
@@ -179,7 +110,7 @@ rl.on('line', function (input) {
         list(function (room) {
             return !room.reserved && room.location.indexOf(amenity) > -1
 
-        });                
+        });
     } else {
         console.log('Unknown command: ' + input)
     }
